@@ -35,3 +35,18 @@ document.getElementById("mixedLetters").textContent = shuffleString(js);
 
 //   na początku chciałem uzyć
 //   const futureIndex = Math.floor(Math.random() * stringToArray.length) + 1;
+const deleteBTN = document.querySelector(".backspace");
+let chars = [];
+const buttons = document.querySelectorAll(".btn");
+const textPlace = document.querySelector(".typeYourAnswer");
+buttons.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    textPlace.value += btn.innerText;
+    chars = textPlace.value.split("");
+    console.log(chars);
+  });
+});
+deleteBTN.addEventListener("click", () => {
+  chars.pop();
+  textPlace.value = chars.join("");
+});
