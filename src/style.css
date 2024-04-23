@@ -91,3 +91,13 @@
   background-color: black;
   color:white;
 }
+
+.counter{
+  display:flex;
+  margin-top: 40px;
+
+
+}
+.counter h2{
+  padding:15px
+}

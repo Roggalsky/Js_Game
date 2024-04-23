@@ -39,11 +39,23 @@ deleteBTN.addEventListener("click", () => {
 });
 
 const checkButton = document.querySelector(".confirm");
+const win = document.querySelector("#winLabel");
+const lose = document.querySelector("#loseLabel");
+let countWin = 0;
+let countLose = 0;
 checkButton.addEventListener("click", () => {
-  if (textPlace.value === chosenLnag) {
-    console.log(`działam`);
+  if (textPlace.value === "") {
+    return;
+  } else if (textPlace.value === chosenLnag) {
+    countWin++;
+    win.textContent = countWin;
+  } else if (textPlace.value != chosenLnag) {
+    countLose++;
+    lose.textContent = countLose;
   }
 });
+console.log(textPlace.value);
+
 //  Fisher-Yates algorithm
 // function shuffleArray(array) {
 //     for (let i = array.length - 1; i > 0; i--) {
