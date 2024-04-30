@@ -1,3 +1,16 @@
+const stoper = document.querySelector("#timer");
+let counter = 60;
+let interval = setInterval(count, 1000);
+function count() {
+  counter--;
+  if (counter === 0) {
+    clearInterval(interval);
+    counter = 60;
+    interval = setInterval(count, 1000);
+  }
+  stoper.textContent = counter;
+}
+
 const langArray = [`GITHUB`, `NODE.JS`, `REACT`, `JAVASCRIPT`, `HTML`];
 const drawLanguage = function (array) {
   for (let i = 0; i < array.length; i++) {
@@ -23,21 +36,6 @@ const shuffleString = function (string) {
 
 document.getElementById("mixedLetters").textContent = shuffleString(chosenLnag);
 
-const deleteBTN = document.querySelector(".backspace");
-let chars = [];
-const buttons = document.querySelectorAll(".btn");
-const textPlace = document.querySelector(".typeYourAnswer");
-buttons.forEach((btn) => {
-  btn.addEventListener("click", () => {
-    textPlace.value += btn.innerText;
-    chars = textPlace.value.split("");
-  });
-});
-deleteBTN.addEventListener("click", () => {
-  chars.pop();
-  textPlace.value = chars.join("");
-});
-
 const checkButton = document.querySelector(".confirm");
 const win = document.querySelector("#winLabel");
 const lose = document.querySelector("#loseLabel");
@@ -46,25 +44,13 @@ let countLose = 0;
 checkButton.addEventListener("click", () => {
   if (textPlace.value === "") {
     return;
-  } else if (textPlace.value === chosenLnag) {
+  } else if (textPlace.value.toUpperCase() === chosenLnag) {
     countWin++;
     win.textContent = countWin;
-  } else if (textPlace.value != chosenLnag) {
+  } else if (textPlace.value.toUpperCase() != chosenLnag) {
     countLose++;
     lose.textContent = countLose;
   }
 });
 console.log(textPlace.value);
-
-//  Fisher-Yates algorithm
-// function shuffleArray(array) {
-//     for (let i = array.length - 1; i > 0; i--) {
-//         let j = Math.floor(Math.random() * (i + 1));
-//         var temp = array[i];
-//         array[i] = array[j];
-//         array[j] = temp;
-//     }
-// }
-
-//   na początku chciałem uzyć
-//   const futureIndex = Math.floor(Math.random() * stringToArray.length) + 1;
+console.log(textPlace.value.toUpperCase());
